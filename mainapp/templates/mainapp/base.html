@@ -5,10 +5,7 @@
     <title>Listagem de Pessoas</title>
 </head>
 <body>
-    <ul>
-        <li><a href="{%url 'home'%}">Home</a> </li>
-        <li><a href="{%url 'pessoa.index'%}">Pessoas</a> </li>
-    </ul>
+    {% include 'mainapp/menu.html' %}
     {%block content%}
     {%endblock content %}
 </body>
