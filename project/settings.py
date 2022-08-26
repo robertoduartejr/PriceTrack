@@ -42,7 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainapp',
-    'pessoa'
+    'pessoa',
+    'rest_framework',
+    'api',
+    'rest_framework.authtoken', # rodar migrations
 ]
 
 MIDDLEWARE = [
@@ -129,3 +132,19 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = '/'
+
+
+#
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication', #forma de autenticação
+    ],
+    'DEFAULT_RENDERER_CLASSES': (           #tipo pra forçar de padrao que a api trabalhe. consumir json
+        'rest_framework.renderers.JSONRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser', #tipo pra forçar de padrao que a api trabalhe. retornar json
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination', #maximo de registro retornado é 10
+    'PAGE_SIZE': 10
+}
